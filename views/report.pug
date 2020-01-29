@@ -1,0 +1,117 @@
+extends layout
+
+block content
+
+    div(class='container-fluid')
+        div(class='row')
+            div(class='col-12')
+                div(class='header text-center row')
+                    div(class='col-sm')
+                        div(class='inner-header')
+                            img(class='jira-logo' src='/img/jira-logo.png')
+
+                            h1(class='title text-left') #{team} Sprint Report
+
+                        div(class='header-date')
+                            p(class='header-date-text') #{start_date} - #{end_date}
+
+                main
+                    div
+                        div(class='team-info')
+                            div(class='team-name-container')
+                                each element in teams
+                                    if element.team_name == team
+                                        img(class='team-logo' src=element.team_logo)
+
+                                each element in teams
+                                    if element.team_name == team
+                                        if element.team_name == 'CPO'
+                                            p(class='team-name') Control Panel Overhaul
+                                        else if element.team_name == 'DBNew'
+                                            p(class='team-name') Director+Bacon
+                                        else if element.team_name == 'BEA'
+                                            p(class='team-name') Team Bea
+                                        else if element.team_name == 'FW'
+                                            p(class='team-name') Firewatch
+
+                            ul(class='team-list')
+                                each element in teams
+                                    if element.team_name == team
+                                        each member in element
+                                            if member != element.team_name && member != element.team_logo
+                                                li= member
+
+                    div
+                        p(class='sprint-title') #[span(class='bold-title') Sprint Title:] #{name}
+
+                        table(class='report-table')
+                            tr
+                                td #[span(class='bold-title') Story Points Expected:] #{sp_expected}
+                                td #[span(class='bold-title') Issues Expected:] #{issues_expected}
+                            tr
+                                td #[span(class='bold-title') Story Points Actual:] #{sp_actual}
+                                td #[span(class='bold-title') Issues Actual:] #{issues_actual}
+
+                        table(class='report-table')
+                            tr
+                                td #[span(class='bold-title') Story Points Roll Over:] #{sp_roll}
+                            tr
+                                td #[span(class='bold-title') Issues Roll Over:] #{issues_roll}
+                            tr
+                                td #[span(class='bold-title') Story Points Added:] #{sp_added}
+
+                        table
+                            tr
+                                td #[span(class='bold-title') 3 Sprint Velocity Average:] #{vel_avg}
+                            tr
+                                td #[span(class='bold-title') Estimated Sprints Left:] #{sprints_left}
+
+                    div
+                        h3(class='table-title') Issues Done
+
+                        table(class='issues-table done-table')
+                            tr
+                                th Issue ID
+                                th Story Points
+                                th Assignee
+                                th Name
+                            each issue in issues
+                                tr
+                                    td= issue.issue_id
+                                    td(class='story-points')= issue.story_points
+                                    td= issue.assignee
+                                    td= issue.name
+
+                    div
+                        h3(class='table-title') Story Points Added
+
+                        table(class='issues-table sp-table')
+                            tr
+                                th Issue ID
+                                th Story Points
+                                th Name
+                            each issue in new_issues
+                                tr
+                                    td= issue.issue_id
+                                    td(class='story-points')= issue.story_points
+                                    td= issue.name
+
+                    div
+                        h3(class='table-title') Roll Over
+
+                        table(class='issues-table roll-table')
+                            tr
+                                th Issue ID
+                                th Story Points
+                                th Assignee
+                                th Status
+                                th Name
+                            each issue in rolled_issues
+                                tr
+                                    td= issue.issue_id
+                                    td(class='story-points')= issue.story_points
+                                    td= issue.assignee
+                                    td= issue.status
+                                    td= issue.name
+
+

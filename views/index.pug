@@ -1,0 +1,75 @@
+extends layout
+
+block content
+    div(class='container-fluid')
+        div(class='row')
+            div(class='col-12')
+                div(class='header text-center row')
+                        div(class='col-sm')
+                            div(class='inner-header')
+                                img(class='jira-logo' src='/img/jira-logo.png')
+                                h1(class='title text-left') Jira Sprint Report
+
+                main
+                    h3(class='report-title') Report Information
+
+                    form(method='Post' action='/details')
+                        div(class='form-group')
+                            label Team Name:
+
+                            select(class='form-control' name='team')
+                                each element in teams
+                                    option(value=element.team_name)= element.team_name
+
+                        div(class='form-group')
+                            label Start Date
+
+                            input(class='form-control', type='date', name='start_date')
+
+                        div(class='form-group')
+                            label End Date
+
+                            input(class='form-control' type='date', name='end_date')
+
+                        div(class='form-group')
+                            label Sprint Number
+
+                            input(class='form-control' type='text', name='sprint_number')
+
+                        div(class='form-group')
+                            label Next Sprint
+
+                            input(class='form-control' type='text', name='next_sprint')
+
+                        div(class='form-group')
+                            label Last Sprint Number
+
+                            input(class='form-control' type='text', name='last_sprint')
+
+                        div(class='form-group')
+                            label Two Sprints Ago Number
+
+                            input(class='form-control' type='text', name='two_sprints')
+
+                        div(class='form-group')
+                            label Story Points Expected
+
+                            input(class='form-control' type='text', name='sp_expected')
+
+                        div(class='form-group')
+                            label Issues Expected
+
+                            input(class='form-control' type='text', name='issues_expected')
+
+                        div(class='form-group')
+                            label Story Points Remaining
+
+                            input(class='form-control' type='text', name='sp_remaining')
+
+                        button(id='generate_button' class='btn' type='submit') Generate Report
+
+    div(id='popup')
+        div(class='popup-inner text-center')
+            h4 Resurrecting Harambe, hang tight...
+
+            div(class='loader text-center')
