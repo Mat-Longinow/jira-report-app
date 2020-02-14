@@ -152,7 +152,7 @@ main > div {
 #popup {
     z-index: 100;
     position: absolute;
-    bottom: -20%;
+    bottom: -10%;
     left: 25%;
     height: 50%;
     width: 50%;
