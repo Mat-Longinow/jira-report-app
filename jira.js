@@ -56,7 +56,7 @@ exports.jiraData = () => {
   // Jira REST API GET request URL's
   const sprintDetailsUrl = 'https://webconnex.atlassian.net/rest/agile/1.0/sprint/' + reportInfo.sprint;
   const rollUrl = 'https://webconnex.atlassian.net/rest/api/2/search?jql=sprint%20%3D%20' + reportInfo.sprint + '%20AND%20sprint%20%3D%20' + reportInfo.last_sprint + '%20AND%20type%20!%3D%20epic';
-  const doneUrl = 'https://webconnex.atlassian.net/rest/api/2/search?jql=project%20%3D%20%22' + reportInfo.team + '%22%20AND%20status%20%3D%20Done%20AND%20sprint%20%3D%20' + reportInfo.sprint + '%20AND%20sprint%20!%3D%20' + reportInfo.next_sprint;
+  const doneUrl = 'https://webconnex.atlassian.net/rest/api/2/search?jql=project%20%3D%20%22' + reportInfo.team + '%22%20AND%20status%20%3D%20Done%20AND%20sprint%20%3D%20' + reportInfo.sprint;
   const newUrl = 'https://webconnex.atlassian.net/rest/api/2/search?jql=project%20%3D%20%22' + reportInfo.team + '%22%20AND%20created%20%3E%3D%20' + adjusted_start_date +'%20AND%20created%20%3C%3D%20' + adjusted_end_date;
   const lastSprintUrl = 'https://webconnex.atlassian.net/rest/api/2/search?jql=project%20%3D%20%22' + reportInfo.team + '%22%20AND%20status%20%3D%20Done%20AND%20sprint%20%3D%20' + reportInfo.last_sprint + '%20AND%20sprint%20!%3D%20' + reportInfo.sprint;
   const twoSprintsUrl = 'https://webconnex.atlassian.net/rest/api/2/search?jql=project%20%3D%20%22' + reportInfo.team + '%22%20AND%20status%20%3D%20Done%20AND%20sprint%20%3D%20' + reportInfo.two_sprints + '%20AND%20sprint%20!%3D%20' + reportInfo.last_sprint;

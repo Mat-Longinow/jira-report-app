@@ -95,8 +95,7 @@ app.post('/details', (req, res) => {
         end_date: req.body.end_date,
         sp_expected: req.body.sp_expected,
         issues_expected: req.body.issues_expected,
-        sp_remaining: req.body.sp_remaining,
-        next_sprint: req.body.next_sprint
+        sp_remaining: req.body.sp_remaining
     };
 
     exports.reportInfo = reportInfo;
